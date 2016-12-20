@@ -1,9 +1,9 @@
 language: go
 
 go:
-  - 1.5
   - 1.6
   - 1.7
+  - master
 
 cache:
   directories:
@@ -12,18 +12,9 @@ cache:
 services:
   - redis-server
 
-env:
-  global:
-    - GO15VENDOREXPERIMENT=1
-  matrix:
-    - TEST=UI
-    - TEST=DEFAULT
-
 matrix:
-  exclude:
-    - go: 1.5
-      env: TEST=UI
-    - go: 1.6
+  include:
+    - go: 1.x
       env: TEST=UI
 
 install:
